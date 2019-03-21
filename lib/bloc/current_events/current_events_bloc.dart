@@ -39,5 +39,3 @@ class CurrentEventsBloc extends Bloc<CurrentEventsEvent, CurrentEventsState> {
     yield CurrentEventsState(loading: false, error: null, data: currentEvents);
   }
 }
-
-final currentEventsBloc = CurrentEventsBloc(eventRepository: EventRepository());

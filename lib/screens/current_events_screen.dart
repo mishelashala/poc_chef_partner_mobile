@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:poc_chef_admin_mobile/bloc/current_events/index.dart';
+import 'package:poc_chef_admin_mobile/repositories/event_repository.dart';
 import 'package:poc_chef_admin_mobile/models/event.dart';
 import 'package:poc_chef_admin_mobile/models/order.dart';
 
 class CurrentEventsScreen extends StatefulWidget {
   @override
-  _CurrentEventsScreen createState() => _CurrentEventsScreen();
+  _CurrentEventsScreen createState() => _CurrentEventsScreen(
+      currentEventsBloc: CurrentEventsBloc(eventRepository: EventRepository()));
 }
 
 class _CurrentEventsScreen extends State<CurrentEventsScreen> {
+  final CurrentEventsBloc currentEventsBloc;
+
+  _CurrentEventsScreen({@required this.currentEventsBloc});
+
   void initState() {
     super.initState();
     currentEventsBloc.fetchCurrentEvents();
